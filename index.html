@@ -8,7 +8,9 @@
 html{scroll-behavior:smooth;scroll-padding-top:100px}  
 body{font-family:Arial,sans-serif;background:#f4f6f9;color:#263449;line-height:1.7}  
 .container{width:92%;max-width:1150px;margin:auto}  
-:root{--azul:#0a192f;--dorado:#d4af37}  .topbar{background:#071426;color:white;text-align:center;padding:10px;font-size:13px}
+:root{--azul:#0a192f;--dorado:#d4af37}  
+
+.topbar{background:#071426;color:white;text-align:center;padding:10px;font-size:13px}
 .topbar a{color:var(--dorado)}
 
 header{background:var(--azul);color:white;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--dorado)}
@@ -56,7 +58,7 @@ section{padding:70px 0;scroll-margin-top:100px}
 .news-content{padding:20px}
 .news-content h3{color:var(--azul)}
 
-/* NUEVOS ESTILOS DE TU GALERÍA */
+/* TU GALERÍA CORREGIDA */
 .gallery{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -89,39 +91,32 @@ section{padding:70px 0;scroll-margin-top:100px}
 .contact{background:white;padding:25px;border-radius:10px}
 input,textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccc;border-radius:5px;font:inherit}
 textarea{height:120px}
-.submit{width:100%;background:var(--dorado);border:0;padding:14px;font-weight:bold;cursor:pointer}
+.submit{width:100%;background:var(--dorado);border:0;padding:14px;font-weight:bold;cursor:pointer;color:var(--azul);border-radius:5px}
 .notice{background:#fff0c2;padding:15px;margin-top:20px;border-left:4px solid var(--dorado)}
 
 footer{background:#071426;color:white;text-align:center;padding:35px;border-top:4px solid var(--dorado)}
 footer strong{color:var(--dorado)}
 
 @media(max-width:900px){
-.menu-btn{display:block}
-nav{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--azul);padding:15px;flex-direction:column}
-nav.show{display:flex}
-nav a{text-align:center}
-.grid3{grid-template-columns:repeat(2,1fr)}
-/* Media Query de tu Galería (900px) */
-.gallery{
-  grid-template-columns:repeat(2,1fr);
-}
+  .menu-btn{display:block}
+  nav{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--azul);padding:15px;flex-direction:column}
+  nav.show{display:flex}
+  nav a{text-align:center}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:600px){
-.grid,.grid3{grid-template-columns:1fr}
-.hero{padding:70px 15px}
-section{padding:50px 0}
-.logo h2{font-size:14px}
-/* Media Query de tu Galería (600px) */
-.gallery{
-  grid-template-columns:1fr;
-}
+  .grid,.grid3{grid-template-columns:1fr}
+  .hero{padding:70px 15px}
+  section{padding:50px 0}
+  .logo h2{font-size:14px}
+  .gallery{grid-template-columns:1fr}
 }
 </style>
-
 </head>  
 <body>  
-<!-- ENCABEZADO Y MENÚ -->  
+
 <header>  
 <div class="container header">  
 <div class="logo">  
@@ -143,7 +138,6 @@ section{padding:50px 0}
 </div>  
 </header>  
 
-<!-- INICIO -->  
 <div class="hero" id="inicio">  
 <div class="container">  
 <small>BIENVENIDOS A NUESTRA INSTITUCIÓN</small>  
@@ -155,7 +149,6 @@ section{padding:50px 0}
 </div>  
 </div>  
 
-<!-- NOSOTROS -->  
 <section id="nosotros">  
 <div class="container">  
 <div class="heading">  
@@ -188,7 +181,6 @@ section{padding:50px 0}
 </div>  
 </section>  
 
-<!-- OFERTA ACADÉMICA -->  
 <section id="oferta" class="cream">  
 <div class="container">  
 <div class="heading">  
@@ -216,7 +208,6 @@ section{padding:50px 0}
 </div>  
 </section>  
 
-<!-- NOTICIAS -->  
 <section id="noticias">  
 <div class="container">  
 <div class="heading">  
@@ -245,7 +236,6 @@ section{padding:50px 0}
 </div>  
 </section>  
 
-<!-- GALERÍA (ACTUALIZADA CON TU CLASE .gallery) -->  
 <section id="galeria" class="cream">  
 <div class="container">  
 <div class="heading">  
@@ -261,7 +251,6 @@ section{padding:50px 0}
 </div>  
 </section>  
 
-<!-- CONTACTO -->  
 <section id="contacto">  
 <div class="container">  
 <div class="heading">  
@@ -274,4 +263,7 @@ section{padding:50px 0}
 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito!');">  
 <label for="nombre">Nombre completo</label>  
 <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre...">  
-    
+<label for="correo">Correo electrónico</label>  
+<input type="email" id="correo" name="correo" required placeholder="Tu correo...">  
+<label for="mensaje">Mensaje o consulta</label>  
+  
