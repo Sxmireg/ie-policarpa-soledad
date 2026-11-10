@@ -6,55 +6,59 @@
     <title>I.E.T. Policarpa Salavarrieta - Soledad</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; color: #1E293B; background-color: #FFFFFF; line-height: 1.6; }
-        .container { width: 92%; max-width: 1200px; margin: 0 auto; }
-        .padding { padding: 40px 0; }
-        .bg-light { background-color: #F4F6F9; }
-        .text-center { text-align: center; }
+        body { font-family: 'Segoe UI', sans-serif; color: #1E293B; background-color: #F4F6F9; line-height: 1.6; }
+        .container { width: 94%; max-width: 1200px; margin: 0 auto; }
         
-        .top-bar { background-color: #172A45; color: #FFFFFF; font-size: 0.85rem; padding: 12px 0; border-bottom: 3px solid #D4AF37; text-align: center; }
+        /* BARRA SUPERIOR CONSTANTE */
+        .top-bar { background-color: #172A45; color: #FFFFFF; font-size: 0.85rem; padding: 12px 10px; border-bottom: 3px solid #D4AF37; text-align: center; }
         
-        .main-header { background-color: #0A192F; color: #FFFFFF; padding: 20px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); text-align: center; }
-        .main-header h1 { font-size: 1.4rem; font-weight: 700; color: #FFFFFF; }
+        /* ENCABEZADO DE CONTROL */
+        .main-header { background-color: #0A192F; color: #FFFFFF; padding: 15px 10px; border-bottom: 2px solid #D4AF37; text-align: center; }
+        .main-header h1 { font-size: 1.3rem; font-weight: 700; color: #FFFFFF; }
         .main-header span { color: #D4AF37; font-size: 0.85rem; display: block; margin-top: 2px; }
         
-        .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 15px; }
-        .nav-link { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; background-color: rgba(255,255,255,0.08); text-transform: uppercase; }
-        .nav-link:hover { background-color: #D4AF37; color: #0A192F; }
+        /* BOTONES DE CONTROL DE PESTAÑAS */
+        .tab-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 15px; }
+        .tab-btn { color: #FFFFFF; background-color: rgba(255,255,255,0.08); border: none; font-weight: 600; font-size: 0.85rem; padding: 8px 14px; border-radius: 4px; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
+        .tab-btn:hover, .tab-btn.active { background-color: #D4AF37; color: #0A192F; }
 
-        .hero { background-color: #0A192F; color: #FFFFFF; padding: 80px 20px; text-align: center; border-bottom: 4px solid #D4AF37; }
-        .hero h2 { font-size: 2.2rem; margin-bottom: 15px; }
-        .hero h2 span { color: #D4AF37; }
-        .hero p { font-size: 1.1rem; font-style: italic; color: #E2E8F0; margin-bottom: 25px; }
-
-        .hero-btn { display: inline-block; padding: 10px 24px; font-weight: bold; text-decoration: none; border-radius: 4px; font-size: 0.9rem; margin: 5px; text-transform: uppercase; }
-        .btn-gold { background-color: #D4AF37; color: #0A192F; }
-        .btn-outline { background-color: transparent; color: #FFFFFF; border: 2px solid #FFFFFF; }
-
-        .box { background-color: #FFFFFF; padding: 25px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-top: 4px solid #0A192F; }
-        .box-dark { background-color: #0A192F; color: #FFFFFF; padding: 25px; border-radius: 6px; margin-bottom: 20px; border-top: 4px solid #D4AF37; }
-        .box h3, .box-dark h3 { font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .box-dark h3 { color: #D4AF37; }
+        /* CONTENEDOR PRINCIPAL FIJO */
+        .content-area { padding: 30px 0; }
         
+        /* CAPAS DE CONTENIDO (OCULTAS POR DEFECTO, EXCEPTO LA ACTIVA) */
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* DISEÑO DE TARJETAS Y CUADROS */
+        .box { background-color: #FFFFFF; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-top: 4px solid #0A192F; }
+        .box-dark { background-color: #0A192F; color: #FFFFFF; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-top: 4px solid #D4AF37; }
+        .box h2, .box-dark h2 { font-size: 1.4rem; margin-bottom: 12px; color: #0A192F; text-transform: uppercase; text-align: center; }
+        .box-dark h2 { color: #D4AF37; }
+        .box h3, .box-dark h3 { font-size: 1.2rem; margin-bottom: 10px; color: #0A192F; }
+        .box-dark h3 { color: #D4AF37; }
+
         .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
 
-        .bullet-list { list-style: none; margin-top: 10px; }
-        .bullet-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
-        .bullet-list li::before { content: "▪"; color: #D4AF37; position: absolute; left: 0; }
-
-        .form-control { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-family: inherit; }
+        /* FORMULARIO */
+        .form-control { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-family: inherit; }
         .btn-submit { background-color: #D4AF37; color: #0A192F; border: none; padding: 12px; font-weight: bold; width: 100%; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
 
-        footer { background-color: #0A192F; color: #94A3B8; padding: 30px 0; text-align: center; font-size: 0.85rem; border-top: 4px solid #D4AF37; }
-        footer span { color: #D4AF37; display: block; margin-top: 5px; }
+        /* PIE DE PÁGINA */
+        footer { background-color: #0A192F; color: #94A3B8; padding: 25px 0; text-align: center; font-size: 0.85rem; border-top: 3px solid #D4AF37; margin-top: 40px; }
+        footer span { color: #D4AF37; display: block; margin-top: 4px; }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
         <div class="container">
-            📞 (605) 342-8890 | ✉️ contactopolicarpa@soledad-atlantico.edu.co | 📍 Calle 23 # 25-10, Barrio Ferrocarril - Soledad, Atlántico
+            📞 (605) 342-8890 | ✉️ contactopolicarpa@soledad-atlantico.edu.co<br>📍 Calle 23 # 25-10, Barrio Ferrocarril - Soledad, Atlántico
         </div>
     </div>
 
@@ -62,31 +66,32 @@
         <div class="container">
             <h1>I.E.T. Policarpa Salavarrieta</h1>
             <span>Formación Integral y Técnica para el Progreso</span>
-            <nav class="nav-menu">
-                <a href="#nosotros" class="nav-link">Nosotros</a>
-                <a href="#oferta" class="nav-link">Oferta Académica</a>
-                <a href="#noticias" class="nav-link">Noticias</a>
-                <a href="#galeria" class="nav-link">Galería</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
-            </nav>
+            
+            <!-- SISTEMA DE PESTAÑAS DIRECTAS -->
+            <div class="tab-menu">
+                <button class="tab-btn active" onclick="openTab('inicio')">Inicio</button>
+                <button class="tab-btn" onclick="openTab('nosotros')">Nosotros</button>
+                <button class="tab-btn" onclick="openTab('oferta')">Oferta Académica</button>
+                <button class="tab-btn" onclick="openTab('noticias')">Noticias</button>
+                <button class="tab-btn" onclick="openTab('galeria')">Galería</button>
+                <button class="tab-btn" onclick="openTab('contacto')">Contacto</button>
+            </div>
         </div>
     </header>
 
-    <div class="hero">
-        <div class="container">
-            <h2>Institución Educativa Técnica<br><span>Policarpa Salavarrieta</span></h2>
-            <p>"Prestigio, Ciencia, Trabajo y Valores en el Corazón de Soledad"</p>
-            <div>
-                <a href="#nosotros" class="hero-btn btn-gold">Conocer Más</a>
-                <a href="#contacto" class="hero-btn btn-outline">Contactar</a>
+    <main class="container content-area">
+
+        <!-- PESTAÑA: INICIO -->
+        <div id="inicio-tab" class="tab-content active">
+            <div class="box-dark text-center" style="padding: 60px 20px;">
+                <h2 style="font-size: 2.1rem; margin-bottom: 15px;">Bienvenidos al Portal Oficial</h2>
+                <p style="font-size: 1.2rem; font-style: italic; color: #E2E8F0; margin-bottom: 25px;">"Prestigio, Ciencia, Trabajo y Valores en el Corazón de Soledad"</p>
+                <button class="tab-btn" style="background-color:#D4AF37; color:#0A192F;" onclick="openTab('nosotros')">Explorar Institución →</button>
             </div>
         </div>
-    </div>
 
-    <main class="container padding">
-        
-        <!-- SECCIÓN NOSOTROS -->
-        <section id="nosotros" class="padding">
+        <!-- PESTAÑA: NOSOTROS -->
+        <div id="nosotros-tab" class="tab-content">
             <div class="grid">
                 <div class="box-dark">
                     <h3>Nuestra Historia</h3>
@@ -97,7 +102,6 @@
                     <p>Orientamos nuestra práctica pedagógica bajo un enfoque humanista y técnico. Concebimos la formación académica como un medio para dotar a los estudiantes soledeños de herramientas tecnológicas y competencias laborales eficaces, promoviendo el emprendimiento ético y la transformación positiva de su comunidad.</p>
                 </div>
             </div>
-
             <div class="grid" style="margin-top: 20px;">
                 <div class="box">
                     <h3>Misión</h3>
@@ -108,52 +112,52 @@
                     <p>Ser reconocidos para el año 2030 como la institución educativa técnica líder del municipio de Soledad y el Atlántico, destacándonos por la innovación en nuestros talleres técnicos, convenios de articulación académica avanzados y la alta calidad humana de nuestros egresados.</p>
                 </div>
             </div>
-        </section>
+            <div class="box" style="margin-top: 20px; background-color: #E2E8F0;">
+                <h3 class="text-center">Valores Core: Respeto, Responsabilidad, Honestidad y Excelencia</h3>
+            </div>
+        </div>
 
-        <!-- SECCIÓN VALORES -->
-        <section class="box bg-light">
-            <h3 class="text-center" style="color: #0A192F;">Valores Institucionales</h3>
-            <ul class="bullet-list" style="margin-top: 15px;">
-                <li><strong>Respeto:</strong> Valoración de la dignidad humana y fomento de la sana convivencia soledeña.</li>
-                <li><strong>Responsabilidad:</strong> Cumplimiento consciente de las obligaciones civiles, técnicas y escolares.</li>
-                <li><strong>Honestidad:</strong> Transparencia, rectitud y veracidad en cada actuar de la comunidad estudiantil.</li>
-                <li><strong>Excelencia:</strong> Esfuerzo constante orientado a los máximos estándares en los talleres técnicos.</li>
-            </ul>
-        </section>
-
-        <!-- SECCIÓN OFERTA ACADÉMICA -->
-        <section id="oferta" class="padding">
-            <h3 style="margin-bottom: 20px; color: #0A192F;" class="text-center">Oferta Académica</h3>
-            <div class="grid">
-                <div class="box">
-                    <h4>Básica Primaria</h4>
-                    <p style="color: #64748B; margin-top: 5px;">Educación inicial integral enfocada en habilidades lectoras, valores ciudadanos y pensamiento lógico.</p>
+        <!-- PESTAÑA: OFERTA -->
+        <div id="oferta-tab" class="tab-content">
+            <div class="box">
+                <h2>Nuestra Oferta Educativa</h2>
+                <div class="grid" style="margin-top: 20px;">
+                    <div class="box" style="border-top:3px solid #D4AF37;">
+                        <h3>Básica Primaria</h3>
+                        <p>Educación inicial integral enfocada en habilidades lectoras, valores ciudadanos y pensamiento lógico en las sedes de Soledad.</p>
+                    </div>
+                    <div class="box" style="border-top:3px solid #D4AF37;">
+                        <h3>Básica Secundaria</h3>
+                        <p>Consolidación de saberes científicos e investigativos preparando el camino hacia el enfoque técnico superior.</p>
+                    </div>
                 </div>
-                <div class="box">
-                    <h4>Básica Secundaria</h4>
-                    <p style="color: #64748B; margin-top: 5px;">Consolidación de saberes científicos e investigativos preparando el camino hacia el enfoque técnico superior.</p>
+                <div class="box-dark" style="margin-top: 20px;">
+                    <h3>Media Técnica Especializada</h3>
+                    <p>Especialidades técnicas industriales y comerciales diseñadas bajo articulación estratégica regional con enfoque laboral y tecnológico directo.</p>
                 </div>
             </div>
-            <div class="box" style="margin-top: 20px;">
-                <h4>Media Técnica</h4>
-                <p style="color: #64748B; margin-top: 5px;">Especialidades técnicas industriales y comerciales diseñadas bajo articulación estratégica regional con enfoque laboral y tecnológico.</p>
-            </div>
-        </section>
+        </div>
 
-        <!-- SECCIÓN NOTICIAS -->
-        <section id="noticias" class="padding bg-light" style="border-radius: 6px; padding: 30px;">
-            <h3 style="color: #0A192F; margin-bottom: 20px;" class="text-center">Noticias y Eventos</h3>
+        <!-- PESTAÑA: NOTICIAS -->
+        <div id="noticias-tab" class="tab-content">
             <div class="box">
-                <span style="color: #AA882C; font-size: 0.85rem; font-weight: bold;">Noviembre 2026</span>
-                <h4 style="margin: 5px 0;">Feria Anual de Especialidades</h4>
-                <p style="color: #64748B;">Los estudiantes exponen prototipos e innovaciones tecnológicas desarrolladas en los talleres prácticos institucionales.</p>
+                <h2>Noticias y Eventos Recientes</h2>
+                <div class="box" style="margin-top: 15px;">
+                    <span style="color: #AA882C; font-size: 0.85rem; font-weight: bold;">Noviembre 2026</span>
+                    <h4 style="margin: 5px 0;">Feria Anual de Especialidades</h4>
+                    <p>Los estudiantes exponen prototipos e innovaciones tecnológicas desarrolladas en los talleres prácticos institucionales del Barrio Ferrocarril.</p>
+                </div>
+                <div class="box">
+                    <span style="color: #AA882C; font-size: 0.85rem; font-weight: bold;">Octubre 2026</span>
+                    <h4 style="margin: 5px 0;">Destacado Rendimiento Académico</h4>
+                    <p>Felicitamos a los alumnos destacados en las pruebas externas por dejar en alto el nombre del municipio de Soledad.</p>
+                </div>
             </div>
-            <div class="box">
-                <span style="color: #AA882C; font-size: 0.85rem; font-weight: bold;">Octubre 2026</span>
-                <h4 style="margin: 5px 0;">Destacado Rendimiento</h4>
-                <p style="color: #64748B;">Felicitamos a los alumnos destacados en las pruebas externas por dejar en alto el nombre de Soledad.</p>
-            </div>
-        </section>
+        </div>
 
-        <!-- SECCIÓN GALERÍA -->
-        
+        <!-- PESTAÑA: GALERÍA -->
+        <div id="galeria-tab" class="tab-content">
+            <div class="box">
+                <h2>Galería de Entornos</h2>
+                <div class="grid" style="margin-top: 20px;">
+                    
