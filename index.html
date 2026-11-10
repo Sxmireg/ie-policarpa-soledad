@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.E.T. Policarpa Salavarrieta - Soledad</title>
+    <style>
+        /* CONFIGURACIÓN ESTÉTICA PROFESIONAL - COLORES OFICIALES */
+        :root {
+            --blue-dark: #0A192F;
+            --blue-medium: #172A45;
+            --gold: #D4AF37;
+            --gold-hover: #AA882C;
+            --white: #FFFFFF;
+            --light-bg: #F4F6F9;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text-dark); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section-padding { padding: 80px 0; }
+        .bg-light { background-color: var(--light-bg); }
+        .bg-blue { background-color: var(--blue-dark); color: var(--white); }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 2rem; }
+
+        /* ENCABEZADOS DE SECCIÓN */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.3rem; color: var(--blue-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .section-header.text-white h2 { color: var(--white); }
+        .divider { width: 70px; height: 4px; background-color: var(--gold); margin: 15px auto 0; border-radius: 2px; }
+
+        /* BARRA SUPERIOR */
+        .top-bar { background-color: var(--blue-medium); color: var(--white); font-size: 0.85rem; padding: 12px 0; border-bottom: 3px solid var(--gold); }
+        .top-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+        /* MENÚ DE NAVEGACIÓN FIJO */
+        .main-header { background-color: var(--blue-dark); position: -webkit-sticky; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        
+        /* ESCUDO VECTORIAL PROPIO */
+        .escudo-propio { width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold) 0%, #AA882C 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .escudo-interior { width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 20px solid var(--blue-dark); position: relative; top: 2px; }
+
+        .logo-text h1 { color: var(--white); font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+        .logo-text span { color: var(--gold); font-size: 0.85rem; display: block; font-weight: 500; }
+        
+        .nav-menu { display: flex; gap: 5px; }
+        .nav-link { color: var(--white); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; padding: 8px 13px; border-radius: 4px; }
+        .nav-link:hover, .nav-link.active { color: var(--blue-dark); background-color: var(--gold); font-weight: 600; }
+        
+        /* BOTÓN HAMBURGUESA PERSONALIZADO */
+        .menu-toggle { display: none; background: none; border: none; width: 30px; height: 24px; position: relative; cursor: pointer; }
+        .menu-toggle span { display: block; width: 100%; height: 3px; background-color: var(--white); border-radius: 2px; transition: 0.3s; position: absolute; }
+        .menu-toggle span:nth-child(1) { top: 0; }
+        .menu-toggle span:nth-child(2) { top: 10px; }
+        .menu-toggle span:nth-child(3) { top: 20px; }
+
+        /* PORTADA PRINCIPAL (HERO) */
+        .hero-section { background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(23, 42, 69, 0.9)), #0A192F; height: 70vh; min-height: 450px; display: flex; align-items: center; color: var(--white); text-align: center; }
+        .hero-content h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero-content .highlight { color: var(--gold); }
+        .hero-content p { font-size: 1.3rem; font-style: italic; margin-bottom: 35px; color: #F1F5F9; }
+
+        /* BOTONES */
+        .btn { display: inline-block; padding: 12px 32px; font-weight: 600; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; font-size: 1rem; }
+        .btn-primary { background-color: var(--gold); color: var(--blue-dark); border: 2px solid var(--gold); }
+        .btn-primary:hover { background-color: var(--gold-hover); border-color: var(--gold-hover); color: var(--white); }
+        .btn-secondary { background-color: transparent; color: var(--white); border: 2px solid var(--white); margin-left: 15px; }
+        .btn-secondary:hover { background-color: var(--white); color: var(--blue-dark); }
+
+        /* REJILLAS */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        /* TARJETAS */
+        .card { background-color: var(--white); padding: 35px 25px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border-top: 4px solid var(--blue-dark); }
+        .card:hover { transform: translateY(-5px); }
+        .card-dark { background-color: var(--blue-dark); color: var(--white); border-top: 4px solid var(--gold); }
+        .card-dark h3 { color: var(--white); margin-bottom: 15px; font-size: 1.4rem; }
+        .card h3 { color: var(--blue-dark); margin-bottom: 15px; font-size: 1.4rem; }
+        
+        /* ICONOS VECTORIALES CSS INTERNOS */
+        .vector-icon { width: 50px; height: 50px; background-color: rgba(212, 175, 55, 0.1); border-radius: 8px; margin-bottom: 20px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; color: var(--gold); font-size: 1.5rem; }
+        .card-dark .vector-icon { background-color: rgba(255,255,255,0.1); }
+
+        .valor-box { background: var(--white); padding: 30px 20px; text-align: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border-bottom: 3px solid transparent; transition: all 0.3s ease; }
+        .valor-box:hover { border-bottom: 3px solid var(--gold); transform: translateY(-3px); }
+
+        .comunidad-card { text-align: center; padding: 20px; }
+        .comunidad-card h3 { margin-bottom: 12px; font-size: 1.4rem; }
+
+        .noticia-item { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+        .noticia-banner { height: 160px; background-color: var(--blue-medium); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-weight: bold; font-size: 1.2rem; }
+        .noticia-info { padding: 25px; }
+        .noticia-info .date { font-size: 0.85rem; color: var(--gold-hover); font-weight: 600; display: block; margin-bottom: 10px; }
+        .read-more { display: inline-block; margin-top: 15px; color: var(--blue-dark); text-decoration: none; font-weight: 600; }
+
+        .galeria-placeholder { height: 180px; background: linear-gradient(135deg, var(--blue-medium) 0%, var(--blue-dark) 100%); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 500; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .galeria-placeholder:hover { transform: scale(1.02); color: var(--gold); }
+
+        .contact-list { list-style: none; margin-top: 25px; }
+        .contact-list li { margin-bottom: 18px; font-size: 1.05rem; }
+        .contact-list strong { color: var(--blue-dark); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid #CBD5E1; border-radius: 4px; outline: none; font-size: 1rem; }
+
+        .main-footer { background-color: var(--blue-dark); color: #94A3B8; padding: 40px 0; border-top: 4px solid var(--gold); text-align: center; }
+
+        /* DISEÑO RESPONSIVE */
+        @media (max-width: 992px) { .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--blue-dark); padding: 25px; border-bottom: 3px solid var(--gold); gap: 10px; }
+            .nav-menu.active { display: flex; }
+            .nav-link { width: 100%; text-align: center; padding: 12px; display: block; }
+            .top-content { justify-content: center; text-align: center; }
+            .hero-content h2 { font-size: 2.2rem; }
+            .hero-buttons { display: flex; flex-direction: column; gap: 15px; }
+            .btn-secondary { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container top-content">
+            <div>📞 (605) 342-8890 | ✉️ contactopolicarpa@soledad-atlantico.edu.co</div>
+            <div>📍 Calle 23 # 25-10, Barrio Ferrocarril - Soledad, Atlántico</div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <div class="escudo-propio"><div class="escudo-interior"></div></div>
+                <div class="logo-text">
+                    <h1>I.E.T. Policarpa Salavarrieta</h1>
+                    <span>Formación Integral y Técnica para el Progreso</span>
+                </div>
+                
