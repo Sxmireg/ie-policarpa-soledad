@@ -13,26 +13,25 @@
         .bg-blue { background-color: #0A192F; color: #FFFFFF; }
         .text-center { text-align: center; }
         
-        /* BARRA SUPERIOR CONSTANTE */
         .top-bar { background-color: #172A45; color: #FFFFFF; font-size: 0.85rem; padding: 12px 0; border-bottom: 3px solid #D4AF37; text-align: center; }
         
-        /* ENCABEZADO PRINCIPAL COMPACTO */
-        .main-header { background-color: #0A192F; color: #FFFFFF; padding: 20px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); text-align: center; }
+        .main-header { background-color: #0A192F; color: #FFFFFF; padding: 20px 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); text-align: center; position: sticky; top: 0; z-index: 1000; }
         .main-header h1 { font-size: 1.4rem; font-weight: 700; color: #FFFFFF; }
         .main-header span { color: #D4AF37; font-size: 0.85rem; display: block; margin-top: 2px; }
         
-        /* MENÚ DE ENLACES TOTALMENTE VISIBLES (SIN MENÚ OCULTO) */
         .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 15px; }
-        .nav-link { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; background-color: rgba(255,255,255,0.08); text-transform: uppercase; }
-        .nav-link:hover { background-color: #D4AF37; color: #0A192F; }
+        .nav-link { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; background-color: rgba(255,255,255,0.08); text-transform: uppercase; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { background-color: #D4AF37; color: #0A192F; }
 
-        /* PORTADA DIRECTA */
-        .hero { background-color: #0A192F; color: #FFFFFF; padding: 60px 20px; text-align: center; border-bottom: 4px solid #D4AF37; }
-        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .hero { background-color: #0A192F; color: #FFFFFF; padding: 80px 20px; text-align: center; border-bottom: 4px solid #D4AF37; }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 15px; }
         .hero h2 span { color: #D4AF37; }
-        .hero p { font-size: 1.1rem; font-style: italic; color: #E2E8F0; }
+        .hero p { font-size: 1.1rem; font-style: italic; color: #E2E8F0; margin-bottom: 25px; }
 
-        /* BLOQUES DE CONTENIDO SEGUROS */
+        .hero-btn { display: inline-block; padding: 10px 24px; font-weight: bold; text-decoration: none; border-radius: 4px; font-size: 0.9rem; margin: 5px; cursor: pointer; text-transform: uppercase; }
+        .btn-gold { background-color: #D4AF37; color: #0A192F; }
+        .btn-outline { background-color: transparent; color: #FFFFFF; border: 2px solid #FFFFFF; }
+
         .box { background-color: #FFFFFF; padding: 25px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-top: 4px solid #0A192F; }
         .box-dark { background-color: #0A192F; color: #FFFFFF; padding: 25px; border-radius: 6px; margin-bottom: 20px; border-top: 4px solid #D4AF37; }
         .box h3, .box-dark h3 { font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -41,16 +40,13 @@
         .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
 
-        /* VALORES Y LISTAS */
         .bullet-list { list-style: none; margin-top: 10px; }
         .bullet-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
         .bullet-list li::before { content: "▪"; color: #D4AF37; position: absolute; left: 0; }
 
-        /* CONTACTO Y FORMULARIO */
         .form-control { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-family: inherit; }
         .btn-submit { background-color: #D4AF37; color: #0A192F; border: none; padding: 12px; font-weight: bold; width: 100%; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
 
-        /* PIE DE PÁGINA */
         footer { background-color: #0A192F; color: #94A3B8; padding: 30px 0; text-align: center; font-size: 0.85rem; border-top: 4px solid #D4AF37; }
         footer span { color: #D4AF37; display: block; margin-top: 5px; }
     </style>
@@ -77,10 +73,14 @@
         </div>
     </header>
 
-    <div class="hero">
+    <div id="inicio" class="hero">
         <div class="container">
             <h2>Institución Educativa Técnica<br><span>Policarpa Salavarrieta</span></h2>
             <p>"Prestigio, Ciencia, Trabajo y Valores en el Corazón de Soledad"</p>
+            <div>
+                <a href="#nosotros" class="hero-btn btn-gold">Conocer Más</a>
+                <a href="#contacto" class="hero-btn btn-outline">Contactar</a>
+            </div>
         </div>
     </div>
 
@@ -91,7 +91,7 @@
             <div class="grid">
                 <div class="box-dark">
                     <h3>Nuestra Historia</h3>
-                    <p>Ubicada en el emblemático Barrio Ferrocarril del municipio de Soledad, nuestra institución nació para brindar alternativas educativas de alta calidad técnica a la juventud soledeña. Nos hemos consolidado como un referente académico en el departamento del Atlántico, formando líderes idóneos para el sector productivo de la región Caribe.</p>
+                    <p>Ubicada en el emblemático Barrio Ferrocarril del municipio de Soledad, nuestra institution nació para brindar alternativas educativas de alta calidad técnica a la juventud soledeña. Nos hemos consolidado como un referente académico en el departamento del Atlántico, formando líderes idóneos para el sector productivo de la región Caribe.</p>
                 </div>
                 <div class="box-dark">
                     <h3>Filosofía e Identidad</h3>
@@ -152,12 +152,4 @@
             <div class="box">
                 <span style="color: #AA882C; font-size: 0.85rem; font-weight: bold;">Octubre 2026</span>
                 <h4 style="margin: 5px 0;">Destacado Rendimiento</h4>
-                <p style="color: #64748B;">Felicitamos a los alumnos destacados en las pruebas externas por dejar en alto el nombre de Soledad.</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓN GALERÍA -->
-        <section id="galeria" class="padding">
-            <h3 style="color: #0A192F; margin-bottom: 20px;" class="text-center">Galería Fotográfica</h3>
-            <div class="grid">
                 
